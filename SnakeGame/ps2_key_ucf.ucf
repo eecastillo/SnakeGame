@@ -1,0 +1,25 @@
+# Pin assignment for push buton switch. 
+# Suelto =>0  oprimido => 1
+# "botones"
+NET "reset" LOC = "G12";	#bt0, el de la derecha
+
+
+# Pin assignment for LEDs. 
+# Para encenderlo requiere un 1
+NET "q[1]" LOC ="M5";	 # L0, el de la derecha
+NET "q[2]" LOC ="M11"; 	 # L1
+NET "q[3]" LOC ="P7";	 # L2
+NET "q[4]" LOC ="P6";	 # L3
+NET "q[5]" LOC ="N5";	 # L4
+NET "q[6]" LOC ="N4";	 # L5
+NET "q[7]" LOC ="P4";	 # L6
+NET "q[8]" LOC ="G1"; 	 # L7, el de la izquierda
+
+
+NET "clk_out" LOC = "A9"    | PULLUP ; # JC  1 
+NET "data_out" LOC = "B9"   | PULLUP ; # JC  2 
+
+NET "clk"  LOC = "B1" ; # Reloj del teclado ps2
+NET "data"  LOC = "C3" ; # Datos seriales del teclado ps2
+
+NET "clk" CLOCK_DEDICATED_ROUTE =FALSE ;//Para quitar error PLACE 1018 OPTIMAL CLOCK IOB

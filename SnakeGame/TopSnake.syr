@@ -1,0 +1,482 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.41 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.41 secs
+ 
+--> Reading design: TopSnake.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "TopSnake.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "TopSnake"
+Output Format                      : NGC
+Target Device                      : xc3s100e-4-cp132
+
+---- Source Options
+Top Module Name                    : TopSnake
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "ClkRedu.v" in library work
+Compiling verilog file "TopSnake.v" in library work
+Module <ClkRedu> compiled
+Module <TopSnake> compiled
+No errors in compilation
+Analysis of file <"TopSnake.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <TopSnake> in library <work>.
+
+Analyzing hierarchy for module <ClkRedu> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <TopSnake>.
+Module <TopSnake> is correct for synthesis.
+ 
+Analyzing module <ClkRedu> in library <work>.
+Module <ClkRedu> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <tamSnake> in unit <TopSnake> has a constant value of 0011 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <led<13>> in unit <TopSnake> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <led<12>> in unit <TopSnake> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <led<11>> in unit <TopSnake> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <led<10>> in unit <TopSnake> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <led<9>> in unit <TopSnake> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <led<8>> in unit <TopSnake> has a constant value of 1 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <ClkRedu>.
+    Related source file is "ClkRedu.v".
+    Found T flip-flop for signal <clkSlow>.
+    Found 25-bit up counter for signal <contador>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 T-type flip-flop(s).
+Unit <ClkRedu> synthesized.
+
+
+Synthesizing Unit <TopSnake>.
+    Related source file is "TopSnake.v".
+WARNING:Xst:646 - Signal <tamSnake> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Register <led<15>> equivalent to <led<14>> has been removed
+    Found finite state machine <FSM_0> for signal <estado>.
+    -----------------------------------------------------------------------
+    | States             | 9                                              |
+    | Transitions        | 10                                             |
+    | Inputs             | 1                                              |
+    | Outputs            | 10                                             |
+    | Clock              | clkSlw                    (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 1000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <led<14>>.
+    Found 8-bit register for signal <led<7:0>>.
+    Found T flip-flop for signal <sentido>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 T-type flip-flop(s).
+	inferred   9 D-type flip-flop(s).
+Unit <TopSnake> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 1
+ 25-bit up counter                                     : 1
+# Registers                                            : 9
+ 1-bit register                                        : 9
+# Toggle Registers                                     : 2
+ T flip-flop                                           : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <estado/FSM> on signal <estado[1:9]> with one-hot encoding.
+--------------------
+ State | Encoding
+--------------------
+ 0000  | 000000100
+ 0001  | 000000010
+ 0010  | 000001000
+ 0011  | 000010000
+ 0100  | 000100000
+ 0101  | 001000000
+ 0110  | 010000000
+ 0111  | 100000000
+ 1000  | 000000001
+--------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# Counters                                             : 1
+ 25-bit up counter                                     : 1
+# Registers                                            : 11
+ Flip-Flops                                            : 11
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <TopSnake> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block TopSnake, actual ratio is 4.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 45
+ Flip-Flops                                            : 45
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : TopSnake.ngr
+Top Level Output File Name         : TopSnake
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 21
+
+Cell Usage :
+# BELS                             : 139
+#      GND                         : 1
+#      INV                         : 3
+#      LUT1                        : 25
+#      LUT2                        : 25
+#      LUT3                        : 4
+#      LUT3_L                      : 1
+#      LUT4                        : 19
+#      LUT4_D                      : 1
+#      LUT4_L                      : 3
+#      MUXCY                       : 31
+#      VCC                         : 1
+#      XORCY                       : 25
+# FlipFlops/Latches                : 45
+#      FDC                         : 38
+#      FDCE                        : 2
+#      FDP                         : 4
+#      FDPE                        : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 20
+#      IBUF                        : 4
+#      OBUF                        : 16
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s100ecp132-4 
+
+ Number of Slices:                       47  out of    960     4%  
+ Number of Slice Flip Flops:             45  out of   1920     2%  
+ Number of 4 input LUTs:                 81  out of   1920     4%  
+ Number of IOs:                          21
+ Number of bonded IOBs:                  21  out of     83    25%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+redu/clkSlow_0                     | NONE(led_6)            | 19    |
+clk                                | BUFGP                  | 26    |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+reset                              | IBUF                   | 45    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 5.994ns (Maximum Frequency: 166.833MHz)
+   Minimum input arrival time before clock: 3.396ns
+   Maximum output required time after clock: 4.394ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'redu/clkSlow_0'
+  Clock period: 5.709ns (frequency: 175.162MHz)
+  Total number of paths / destination ports: 137 / 19
+-------------------------------------------------------------------------
+Delay:               5.709ns (Levels of Logic = 4)
+  Source:            estado_FSM_FFd5 (FF)
+  Destination:       led_3 (FF)
+  Source Clock:      redu/clkSlow_0 rising
+  Destination Clock: redu/clkSlow_0 rising
+
+  Data Path: estado_FSM_FFd5 to led_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              4   0.591   0.762  estado_FSM_FFd5 (estado_FSM_FFd5)
+     LUT4:I0->O            1   0.704   0.424  led_6_mux000011_SW0 (N4)
+     LUT4_D:I3->LO         1   0.704   0.135  led_6_mux000011 (N8)
+     LUT3:I2->O            6   0.704   0.673  led_6_mux000012 (N0)
+     LUT4:I3->O            1   0.704   0.000  led_5_mux00001 (led_5_mux0000)
+     FDP:D                     0.308          led_5
+    ----------------------------------------
+    Total                      5.709ns (3.715ns logic, 1.994ns route)
+                                       (65.1% logic, 34.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 5.994ns (frequency: 166.833MHz)
+  Total number of paths / destination ports: 976 / 27
+-------------------------------------------------------------------------
+Delay:               5.994ns (Levels of Logic = 26)
+  Source:            redu/contador_1 (FF)
+  Destination:       redu/contador_24 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: redu/contador_1 to redu/contador_24
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              2   0.591   0.622  redu/contador_1 (redu/contador_1)
+     LUT1:I0->O            1   0.704   0.000  redu/Mcount_contador_cy<1>_rt (redu/Mcount_contador_cy<1>_rt)
+     MUXCY:S->O            1   0.464   0.000  redu/Mcount_contador_cy<1> (redu/Mcount_contador_cy<1>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<2> (redu/Mcount_contador_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<3> (redu/Mcount_contador_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<4> (redu/Mcount_contador_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<5> (redu/Mcount_contador_cy<5>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<6> (redu/Mcount_contador_cy<6>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<7> (redu/Mcount_contador_cy<7>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<8> (redu/Mcount_contador_cy<8>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<9> (redu/Mcount_contador_cy<9>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<10> (redu/Mcount_contador_cy<10>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<11> (redu/Mcount_contador_cy<11>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<12> (redu/Mcount_contador_cy<12>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<13> (redu/Mcount_contador_cy<13>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<14> (redu/Mcount_contador_cy<14>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<15> (redu/Mcount_contador_cy<15>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<16> (redu/Mcount_contador_cy<16>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<17> (redu/Mcount_contador_cy<17>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<18> (redu/Mcount_contador_cy<18>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<19> (redu/Mcount_contador_cy<19>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<20> (redu/Mcount_contador_cy<20>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<21> (redu/Mcount_contador_cy<21>)
+     MUXCY:CI->O           1   0.059   0.000  redu/Mcount_contador_cy<22> (redu/Mcount_contador_cy<22>)
+     MUXCY:CI->O           0   0.059   0.000  redu/Mcount_contador_cy<23> (redu/Mcount_contador_cy<23>)
+     XORCY:CI->O           1   0.804   0.499  redu/Mcount_contador_xor<24> (Result<24>)
+     LUT2:I1->O            1   0.704   0.000  redu/Mcount_contador_eqn_241 (redu/Mcount_contador_eqn_24)
+     FDC:D                     0.308          redu/contador_24
+    ----------------------------------------
+    Total                      5.994ns (4.873ns logic, 1.121ns route)
+                                       (81.3% logic, 18.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'redu/clkSlow_0'
+  Total number of paths / destination ports: 4 / 3
+-------------------------------------------------------------------------
+Offset:              3.396ns (Levels of Logic = 2)
+  Source:            derecha (PAD)
+  Destination:       sentido_0 (FF)
+  Destination Clock: redu/clkSlow_0 rising
+
+  Data Path: derecha to sentido_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.218   0.499  derecha_IBUF (derecha_IBUF)
+     LUT3:I1->O            1   0.704   0.420  sentido_not00011 (sentido_not0001)
+     FDCE:CE                   0.555          sentido_0
+    ----------------------------------------
+    Total                      3.396ns (2.477ns logic, 0.919ns route)
+                                       (72.9% logic, 27.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'redu/clkSlow_0'
+  Total number of paths / destination ports: 10 / 10
+-------------------------------------------------------------------------
+Offset:              4.394ns (Levels of Logic = 1)
+  Source:            led_14 (FF)
+  Destination:       led<15> (PAD)
+  Source Clock:      redu/clkSlow_0 rising
+
+  Data Path: led_14 to led<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q              3   0.591   0.531  led_14 (led_14)
+     OBUF:I->O                 3.272          led_15_OBUF (led<15>)
+    ----------------------------------------
+    Total                      4.394ns (3.863ns logic, 0.531ns route)
+                                       (87.9% logic, 12.1% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 8.96 secs
+ 
+--> 
+
+Total memory usage is 4550104 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    8 (   0 filtered)
+

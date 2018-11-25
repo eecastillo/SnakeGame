@@ -1,0 +1,31 @@
+# En los 4 conectores (JA,JB, JC y JD), la terminal 5 es tierra y la 6 es Vcc 
+# Son bidireccionales, es decir, cada una de las 16 líneas se puede usar como entrada o salida.
+# Si la terminal es usada como salida hay que quitar " | PULLUP " y dejar " | DRIVE = 2 "
+# Si la terminal es usada como entrada hay que quitar " | DRIVE = 2 " y dejar " | PULLUP "
+#
+NET "led[0]" LOC = "B2" | DRIVE = 2 ;  # JA terminal 1, está arriba de SW7Conector JA 
+NET "led[1]" LOC = "A3" | DRIVE = 2;  # JA terminal 2
+NET "led[2]" LOC = "J3" | DRIVE = 2;  # JA terminal 3
+NET "led[3]" LOC = "B5" | DRIVE = 2;  # JA terminal 4, está junto a la terminal JA-5, la de tierra 
+ 
+NET "led[4]" LOC = "C6" | DRIVE = 2;  # JB  1, está arriba de SW4
+NET "led[5]" LOC = "B6" | DRIVE = 2;  #·JB  2
+NET "led[6]" LOC = "C5" | DRIVE = 2;  # JB  3
+NET "led[7]" LOC = "B7" | DRIVE = 2;  # JB  4, está junto a la terminal JB-5, la de tierra#
+
+NET "led[8]" LOC = "A9"  | DRIVE = 2; # JC  1 
+NET "led[9]" LOC = "B9"  | DRIVE = 2; # JC  2 
+NET "led[10]" LOC = "A10" | DRIVE = 2; # JC  3 
+NET "led[11]" LOC = "C9"  | DRIVE = 2; # JC  4 
+#
+NET "led[12]" LOC = "C12" | DRIVE = 2; # JD 1
+NET "led[13]" LOC = "A13" | DRIVE = 2; # JD 2
+NET "led[14]" LOC = "C13" | DRIVE = 2; # JD 3
+NET "led[15]" LOC = "D12" | DRIVE = 2; # JD 4
+
+NET "derecha" LOC = "G12";
+NET "izquierda" LOC = "A7";
+
+NET "reset" LOC = "C11";
+NET "start" LOC = "M4";
+NET "clk" LOC = "B8";
